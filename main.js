@@ -115,5 +115,4 @@ const resetGame = () => {
   document.getElementById('wins').textContent = 0
   document.getElementById('loss').textContent = 0
   document.getElementById('ties').textContent = 0
-  document.getElementById('reset').style.cssText = 'background: red;font-weight: bold;'
 }

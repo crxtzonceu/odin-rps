@@ -106,9 +106,9 @@ const resetGame = () => {
   ties = 0
   displayScore.textContent = `Score : ${playerScore} VS ${botScore}`
   displayMove.innerHTML = `
-  <p>Player: <span class="space">Waiting</span> 
+  <p>Player: <span class="space">Waiting...</span> 
   VS 
-  <span class="space">Waiting</span>:Bot</p>
+  <span class="space">Waiting...</span>:Bot</p>
   `
   displayRoundResult.textContent = `Waiting for the game to start!`
   document.getElementById('total-games').textContent = 0

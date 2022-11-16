@@ -12,7 +12,6 @@ button {
   margin-right: 8px;
 }
 
-.reset {
-  display: block;
-  margin: 10px auto;
+.round-message {
+  font-weight: 800;
 }

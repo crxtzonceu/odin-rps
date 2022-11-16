@@ -9,20 +9,21 @@
   </head>
 
   <body>
-    <h1>Rock Paper Scissor</h1>
+    <h3>Rock Paper Scissor (game of 5)</h3>
 
     <p>Score: <span id="score">0 vs 0</span></p>
     <div class="result-container">
-      <p id="display-move">Player: <span class="space">Waiting</span> VS <span class="space">Waiting</span> :Bot</p>
+      <p id="display-move">Player: <span class="space">Waiting...</span> VS <span class="space">Waiting...</span> :Bot</p>
     </div>
 
-    <p id="round-message">You won the round</p>
+    <p class="round-message" id="round-message">Waiting for the game to start</p>
     <button id="rock">Rock</button>
     <button id="paper">Paper</button>
     <button id="scissor">Scissor</button>
-    <button class="reset">Reset</button>
+    <button id="reset">Reset</button>
 
-    <h3>Your Record (Game of 5)</h3>
+    <h3>Games Stats:</h3>
+    <p>Total Games: <span id="total-games">0</span></p>
     <p>Wins: <span id="wins">0</span></p>
     <p>Loss: <span id="loss">0</span></p>
     <p>Ties: <span id="ties">0</span></p>

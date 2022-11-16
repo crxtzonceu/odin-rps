@@ -1,41 +1,85 @@
+const displayMove = document.getElementById('display-move')
+const displayRoundResult = document.getElementById('round-message')
+const displayScore = document.getElementById("score")
+let playerScore = 0
+let botScore = 0
 let wins = 0
-let lose = 0
+let loss = 0
 let ties = 0
 
-const getComputerChoice = () => {
-  const rng = ['Rock', 'Paper', 'Scissor']
-  return rng[Math.floor(Math.random() * 3)].toLowerCase()
-}
+// event listeners
+document.addEventListener('click', function(e){
+  // filter the clicks
+  if(playerScore == 5 || botScore == 5) {
+    return
+  }
+  else if(e.target.id == 'rock') {
+    playRound('rock')
+  }
+  else if(e.target.id == 'paper') {
+    playRound('paper')
+  }
+  else if(e.target.id == 'scissor') {
+    playRound('scissor')
+  }
+})
 
-const playRound = (player, bot) => {
-  if(player == bot) {
-    console.log(`It's a Tie! You both picked ${bot[0].toUpperCase() + bot.slice(1)}`)
+const playRound = playerMove => {
+  const botMove = getBotMove()
+  let result = ''
+  // check the win, lose and tie state
+  if(playerMove == botMove) {
+    result = "Tie"
     ties++
-  } else if(player == "rock" && bot == "scissor"){
-    console.log(`You Win! Rock beats Scissor`)
+  } else if(playerMove == 'rock' && botMove == 'scissor' ||
+          playerMove == 'paper' && botMove == 'rock' ||
+          playerMove == 'scissor' && botMove == 'paper') {
+    result = 'Win'
     wins++
-  } else if(player == "scissor" && bot == "paper"){
-    console.log("You Win! Scissor beats Paper")
-    wins++
-  } else if(player == "paper" && bot == "rock"){
-    console.log("You Win! Paper beats Rock")
-    wins++
-  } else{
-    console.log(`You Lose! ${bot[0].toUpperCase() + bot.slice(1)} beats ${player[0].toUpperCase() + bot.slice(1)}`)
-    lose++
+    playerScore++
+  } else {
+    result = 'Lose'
+    loss++
+    botScore++
   }
+  // pass the moves and call to render the dom
+  renderHtml(playerMove, botMove, result)
 }
 
-const game = () => {
-  for(let i = 0; i <  5; i++){
-    const userMove = prompt("Enter your move: ").toLowerCase()
-    playRound(userMove, getComputerChoice())
+const renderHtml = (p, b, result) => {
+  // Uppercase the Moves
+  const player =  makeFirstLetterUpperCase(p)
+  const bot = makeFirstLetterUpperCase(b)
+  // Render the Score and the Moves
+  displayScore.textContent = `Score : ${playerScore} VS ${botScore}`
+  displayMove.innerHTML = `
+  <p>Player: <span class="space">${player}</span> 
+  VS 
+  <span class="space">${bot}</span>:Bot</p>
+  `
+  // Round Result
+  if(result == 'Tie'){
+    displayRoundResult.textContent = `It's a Tie!`
+  } else {
+    displayRoundResult.textContent = `Round Result: ${result}!`
   }
-  console.log(`in 5 Rounds`)
-  console.log(`Wins: ${wins}`)
-  console.log(`Loses: ${lose}`)
-  console.log(`Ties: ${ties}`)
-  console.log("Program Finished!")
+  // Game Stats
+  document.getElementById('wins').textContent = wins
+  document.getElementById('loss').textContent = loss
+  document.getElementById('ties').textContent = ties
 }
 
-game()
+const getBotMove = () => {
+  // @return bot move
+  const rng = ['rock', 'paper', 'scissor']
+  return rng[Math.floor(Math.random() * 3)]
+}
+
+const makeFirstLetterUpperCase = word => {
+  // Make the first letter of the word uppercase
+  return `${word[0].toUpperCase()}${word.slice(1)}`
+}
+
+const resetGame = () => {
+  // reset the game, variables, and the dom
+}

@@ -1,3 +1,18 @@
 body {
   text-align: center;
+  margin: 0;
+}
+
+.space {
+  margin: 0 10px;
+}
+
+button {
+  padding: 6px 10px;
+  margin-right: 8px;
+}
+
+.reset {
+  display: block;
+  margin: 10px auto;
 }

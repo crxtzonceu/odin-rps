@@ -16,14 +16,14 @@ document.addEventListener('click', function(e){
   } else if(playerScore == 5 || botScore == 5) {
     return
   }
-  else if(e.target.id == 'rock') {
-    playRound('rock')
+  else if(e.target.id == 'Rock') {
+    playRound('Rock')
   }
-  else if(e.target.id == 'paper') {
-    playRound('paper')
+  else if(e.target.id == 'Paper') {
+    playRound('Paper')
   }
-  else if(e.target.id == 'scissor') {
-    playRound('scissor')
+  else if(e.target.id == 'Scissor') {
+    playRound('Scissor')
   }
 })
 
@@ -35,9 +35,9 @@ const playRound = playerMove => {
     result = "Tie"
     ties++
     totalGames++
-  } else if(playerMove == 'rock' && botMove == 'scissor' ||
-          playerMove == 'paper' && botMove == 'rock' ||
-          playerMove == 'scissor' && botMove == 'paper') {
+  } else if(playerMove == 'Rock' && botMove == 'Scissor' ||
+          playerMove == 'Paper' && botMove == 'Rock' ||
+          playerMove == 'Scissor' && botMove == 'Paper') {
     result = 'Win'
     wins++
     playerScore++
@@ -52,10 +52,7 @@ const playRound = playerMove => {
   renderHtml(playerMove, botMove, result)
 }
 
-const renderHtml = (p, b, result) => {
-  // TitleCase the Moves
-  const player =  makeFirstLetterUpperCase(p)
-  const bot = makeFirstLetterUpperCase(b)
+const renderHtml = (player, bot, result) => {
   // Render the Score and the Moves
   displayScore.textContent = `${playerScore} VS ${botScore}`
   displayMove.innerHTML = `
@@ -87,13 +84,8 @@ const renderHtml = (p, b, result) => {
 
 const getBotMove = () => {
   // @return bot move
-  const rng = ['rock', 'paper', 'scissor']
+  const rng = ['Rock', 'Paper', 'Scissor']
   return rng[Math.floor(Math.random() * 3)]
-}
-
-const makeFirstLetterUpperCase = word => {
-  // Make the first letter of the word uppercase
-  return `${word[0].toUpperCase()}${word.slice(1)}`
 }
 
 const resetGame = () => {

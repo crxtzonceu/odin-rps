@@ -1,6 +1,7 @@
 body {
   text-align: center;
   margin: 0;
+  background: lightgreen;
 }
 
 .space {
@@ -11,6 +12,8 @@ body {
 button {
   padding: 6px 10px;
   margin-right: 8px;
+  background: gray;
+  color: white;
 }
 
 .round-message {

@@ -57,7 +57,7 @@ const renderHtml = (p, b, result) => {
   const player =  makeFirstLetterUpperCase(p)
   const bot = makeFirstLetterUpperCase(b)
   // Render the Score and the Moves
-  displayScore.textContent = `Score : ${playerScore} VS ${botScore}`
+  displayScore.textContent = `${playerScore} VS ${botScore}`
   displayMove.innerHTML = `
   <p>Player: <span class="space">${player}</span> 
   VS 
